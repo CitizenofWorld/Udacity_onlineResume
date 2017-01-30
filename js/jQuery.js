@@ -8827,3 +8827,26 @@ if ( typeof window === "object" && typeof window.document === "object" ) {
 }
 
 })( window );
+
+
+// adding to DOM for the education area of the resume
+
+var OnlineCourses, education;
+
+education = $("#education");
+OnlineCourses = $("<h2 class='online'>Online Courses</h2>");
+education.append(OnlineCourses);
+
+
+
+
+
+
+
+
+
+
+
+
+
+

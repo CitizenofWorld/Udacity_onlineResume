@@ -1,4 +1,3 @@
-////  Tis is the BIO area of the resume project
 var bio = {
     "name": "Jessica Sole",
     "role": "Wannabe Web Developer",
@@ -76,11 +75,13 @@ var work = {
             "description": "Manage staff of dining services and made sure all food standards were being met.  Left for Vegas opportunity"
         }
     ]
-}
+};
 
 
 function displayWork() {
-    for (job in work.jobs) {
+    for (var job = 0; job < work.jobs.length; job++) {
+        console.log(work.jobs[job]);
+
         $("#workExperience").append(HTMLworkStart);
 
         var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -117,10 +118,12 @@ var projects = {
             "images": "images/albert.jpg"
         }
     ]
-}
+};
 
 projects.display = function() {
-    for (project in projects.projects) {
+    for (var project = 0; project < projects.projects.length; project++) {
+        console.log(projects.projects[project]);
+
         $("#projects").append(HTMLprojectStart);
 
         var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
@@ -135,7 +138,7 @@ projects.display = function() {
         var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
         $(".project-entry:last").append(formattedImage);
     }
-}
+};
 
 projects.display();
 
@@ -143,13 +146,13 @@ projects.display();
 
 //internationalize button
 // function inName(name) {
-// 	name = name.trim().split(" ");
-// 	console.log(name);
-// 	name[1] = name[1].toUpperCase();
-// 	name[0] = name[0].slice(0,1).toUpperCase() +
-// 	name[0].slice(1).toLowerCase();
+//  name = name.trim().split(" ");
+//  console.log(name);
+//  name[1] = name[1].toUpperCase();
+//  name[0] = name[0].slice(0,1).toUpperCase() +
+//  name[0].slice(1).toLowerCase();
 
-// 	return name[0] +" "+ name[1];
+//  return name[0] +" "+ name[1];
 // }
 
 // $("#main").append(internationalizeButton);
@@ -193,29 +196,36 @@ var education = {
 
 
 education.display = function() {
-    for (school in education.schools) {
-        $("#education").append(HTMLschoolStart);
+    for (var school = 0; school < education.schools.length; school++) {
+        console.log(education.schools[school]);
+
+        $(".edu").append(HTMLschoolStart);
 
         var formattedschoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
-        $(".education-entry:last").append(formattedschoolName);
+        $(".edu:last").append(formattedschoolName);
 
         var formattedschoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-        $(".education-entry:last").append(formattedschoolDegree);
+        $(".edu:last").append(formattedschoolDegree);
 
         var formattedschoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-        $(".education-entry:last").append(formattedschoolDates);
+        $(".edu:last").append(formattedschoolDates);
 
         var formattedschoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-        $(".education-entry:last").append(formattedschoolDates);
+        $(".edu:last").append(formattedschoolDates);
 
         var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
-        $(".education-entry:last").append(formattedschoolMajor);
+        $(".edu:last").append(formattedschoolMajor);
     }
+};
 
-    if (education.onlineCourses.length > 0) {
-        $("#education").append(HTMLonlineClasses);
-        for (i in education.onlineCourses) {
+if (education.onlineCourses.length > 0) {
+
+
+    for (var i in education.onlineCourses) {
+        if (education.onlineCourses.hasOwnProperty(i)) {
             $("#education").append(HTMLschoolStart);
+
+            $(".online").append(HTMLschoolStart);
             var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title);
             $(".education-entry:last").append(formattedOnlineTitle);
             var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
