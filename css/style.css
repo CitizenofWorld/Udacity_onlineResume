@@ -18,10 +18,16 @@ h6 {
     overflow: auto;
 }
 
-.education-entry,
+.education-entry{
+     font-size: 15px;
+    font-weight: normal;
+    line-height: 15px;
+}
 .work-entry,
 .project-entry {
     padding: 0 5%;
+    font-size: 15px;
+  
 }
 
 h1 {
@@ -103,6 +109,7 @@ a {
 
 .orange {
     background-color: #f5ae23;
+    te
 }
 
 .orange-text {
@@ -122,7 +129,7 @@ a {
 }
 
 .dark-gray {
-    background-color: #238cf5;
+    background-color: #4a4a4a;
 }
 
 /* TODO: Replace with image later */
@@ -222,8 +229,16 @@ span {
 }
 
 .edu{
-
-font-size: 15px;
-
-
+    font-size: 15px;
+    padding: 0 5%;
+    margin: 0 ;
 }
+
+#education2 {
+    font-size: 24px;
+}
+
+.online
+
+
+

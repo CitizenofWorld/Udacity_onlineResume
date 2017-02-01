@@ -1,3 +1,6 @@
+// This code is the javascript for the udacity resume project 
+
+// below is the information that is in the header and footer of the page
 var bio = {
     "name": "Jessica Sole",
     "role": "Wannabe Web Developer",
@@ -12,7 +15,7 @@ var bio = {
     "skills": [
         "being awesome", "patience", "  hiking", "  learning "
     ],
-    "bioPic": "images/lisa.jpg"
+    "biopic": "images/lisa.jpg"
 
 };
 
@@ -20,7 +23,7 @@ var bio = {
 
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
+var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 var formattedwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 var formattedemail = HTMLemail.replace("%data%", bio.contacts.email);
 var formattedgithub = HTMLgithub.replace("%data%", bio.contacts.github);
@@ -31,26 +34,27 @@ var formattedtwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
 
 $("#header").prepend(formattedName, formattedRole);
 $("#header").append(formattedBioPic, formattedwelcomeMsg);
-$("#topContacts").append(formattedemail, formattedgithub, formattedlocation, formattedmobile, formattedtwitter);
+$("#topContacts, #footerContacts").append(formattedemail, formattedgithub, formattedlocation, formattedmobile, formattedtwitter);
 
+//This loop below puts the skills array onto the header portion of the project
+var array = bio.skills.length;
 
-
-if (bio.skills.length > 0) {
+for (skill = 0; skill < array; skill++) {
     $("#header").append(HTMLskillsStart);
-
     var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
     $("#skills").append(formattedSkill);
-    formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
     $("#skills").append(formattedSkill);
-    formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
     $("#skills").append(formattedSkill);
-    formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
     $("#skills").append(formattedSkill);
+    break;
 }
 
 
 
-//// Th is is the work history section of the resume project
+//// This is the work history section of the resume project
 
 var work = {
     "jobs": [{
@@ -77,7 +81,7 @@ var work = {
     ]
 };
 
-
+//This loop below will display the jobs array into the work experience part of the project
 function displayWork() {
     for (var job = 0; job < work.jobs.length; job++) {
         console.log(work.jobs[job]);
@@ -88,8 +92,6 @@ function displayWork() {
         var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
         var formattedEmployerTitle = formattedEmployer + formattedTitle;
         $(".work-entry:last").append(formattedEmployerTitle);
-
-
         var formattedworkDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
         $(".work-entry:last").append(formattedworkDates);
         var formattedworkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
@@ -109,16 +111,19 @@ var projects = {
             "title": "Online Resume Project",
             "dates": "January 2016",
             "description": "The project requires students to use Javascript to build a resume.",
-            "images": "images/steve.jpg"
+            "images": ["images/steve.jpg"]
         },
         {
             "title": "Build a Portfolio Site",
             "dates": "October 2016",
             "description": "The project requires students to build a site using bootstrap.",
-            "images": "images/albert.jpg"
-        }
+            "images": ["images/albert.jpg"]
+        },
+
     ]
 };
+
+//This loop below displays the projects array onto the page
 
 projects.display = function() {
     for (var project = 0; project < projects.projects.length; project++) {
@@ -135,15 +140,23 @@ projects.display = function() {
         var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
         $(".project-entry:last").append(formattedDescription);
 
-        var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
-        $(".project-entry:last").append(formattedImage);
+        //this loop is for the images of the projects
+        var imgArray = projects.projects[project].images.length;
+
+        for (var image = 0; image < imgArray; image++) {
+            var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+            $(".project-entry:last").append(formattedImage);
+
+            console.log();
+        }
     }
 };
 
+
+
 projects.display();
 
-
-
+//below is the code to have a button that makes the page ready for international viewers......
 //internationalize button
 // function inName(name) {
 //  name = name.trim().split(" ");
@@ -158,7 +171,7 @@ projects.display();
 // $("#main").append(internationalizeButton);
 
 
-
+//Below is the array that will be used to diplay the education info, both university and online courses
 var education = {
     "schools": [{
             "name": "Johnson and Wales",
@@ -193,9 +206,10 @@ var education = {
 };
 
 
-
+//the loop below displays the education info that is within the schools array
 
 education.display = function() {
+
     for (var school = 0; school < education.schools.length; school++) {
         console.log(education.schools[school]);
 
@@ -211,39 +225,34 @@ education.display = function() {
         $(".edu:last").append(formattedschoolDates);
 
         var formattedschoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-        $(".edu:last").append(formattedschoolDates);
+        $(".edu:last").append(formattedschoolLocation);
 
         var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
         $(".edu:last").append(formattedschoolMajor);
-    }
-};
 
-if (education.onlineCourses.length > 0) {
+        //This loop below displays the online courses info in the onlineCourses array
 
+        var eduArray = education.onlineCourses.length;
 
-    for (var i in education.onlineCourses) {
-        if (education.onlineCourses.hasOwnProperty(i)) {
-            $("#education").append(HTMLschoolStart);
+        for (var online = 0; online < eduArray; online++) {
 
             $(".online").append(HTMLschoolStart);
-            var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title);
+            var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[school].title);
             $(".education-entry:last").append(formattedOnlineTitle);
-            var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
+            var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[school].school);
             $(".education-entry:last").append(formattedOnlineSchool);
-            var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
+            var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[school].dates);
             $(".education-entry:last").append(formattedOnlineDates);
-            var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url);
+            var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[school].url);
             $(".education-entry:last").append(formattedOnlineURL);
+            break;
         }
     }
-}
-
-
+};
 education.display();
 
 
 
 ///  Heres  a Map
-
 
 $("#mapDiv").append(googleMap);
