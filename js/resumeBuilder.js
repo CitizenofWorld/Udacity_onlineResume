@@ -1,3 +1,13 @@
+// Hello.
+//
+// This is JSHint, a tool that helps to detect errors and potential
+// problems in your JavaScript code.
+//
+// To start, simply enter some JavaScript anywhere on this page. Your
+// report will appear on the right side.
+//
+// Additionally, you can toggle specific options in the Configure
+// menu.
 // This code is the javascript for the udacity resume project 
 // below is the information that is in the header and footer of the page
 var bio = {
@@ -19,26 +29,27 @@ var bio = {
 };
 
 
-
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
-var formattedwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-var formattedemail = HTMLemail.replace("%data%", bio.contacts.email);
-var formattedgithub = HTMLgithub.replace("%data%", bio.contacts.github);
-var formattedmobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-var formattedlocation = HTMLlocation.replace("%data%", bio.contacts.location);
-var formattedtwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-
-
-$("#header").prepend(formattedName, formattedRole);
-$("#header").append(formattedBioPic, formattedwelcomeMsg);
-$("#topContacts, #footerContacts").append(formattedemail, formattedgithub, formattedlocation, formattedmobile, formattedtwitter);
-
-//This loop below puts the skills array onto the header portion of the project
-var array = bio.skills.length;
+//This loop below puts the objects array onto the header portion of the projec
 
 bio.display = function() {
+
+
+    var formattedName = HTMLheaderName.replace("%data%", bio.name);
+    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+    var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
+    var formattedwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+    var formattedemail = HTMLemail.replace("%data%", bio.contacts.email);
+    var formattedgithub = HTMLgithub.replace("%data%", bio.contacts.github);
+    var formattedmobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+    var formattedlocation = HTMLlocation.replace("%data%", bio.contacts.location);
+    var formattedtwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+
+
+    $("#header").prepend(formattedName, formattedRole);
+    $("#header").append(formattedBioPic, formattedwelcomeMsg);
+    $("#topContacts, #footerContacts").append(formattedemail, formattedgithub, formattedlocation, formattedmobile, formattedtwitter);
+
+    var array = bio.skills.length;
     for (skill = 0; skill < array; skill++) {
         $("#header").append(HTMLskillsStart);
         var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
@@ -84,7 +95,7 @@ var work = {
 };
 
 //This loop below will display the jobs array into the work experience part of the project
-function displayWork() {
+work.display = function() {
     for (var job = 0; job < work.jobs.length; job++) {
         console.log(work.jobs[job]);
 
@@ -102,9 +113,9 @@ function displayWork() {
         $(".work-entry:last").append(formattedworkDescription);
 
     }
-}
+};
 
-displayWork();
+work.display();
 
 /////   This is the Projects section of resume
 
@@ -178,7 +189,7 @@ var education = {
     "schools": [{
             "name": "Johnson and Wales",
             "location": "Miami, FL",
-            "major": "Baking and Pastry Arts",
+            "majors": ["Baking and Pastry Arts"],
             "degree": "AS",
             "dates": "2007",
             "url": "https://www1.jwu.edu/"
@@ -187,7 +198,7 @@ var education = {
             "name": "Florida International University",
             "location": "Miami, FL",
             "degree": "BA",
-            "major": "Hospitality Management",
+            "majors": ["Hospitality Management"],
             "dates": "Still in progress",
             "url": "http://www.fiu.edu/"
         }
@@ -229,7 +240,7 @@ education.display = function() {
         var formattedschoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
         $(".edu:last").append(formattedschoolLocation);
 
-        var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+        var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
         $(".edu:last").append(formattedschoolMajor);
 
         //This loop below displays the online courses info in the onlineCourses array
