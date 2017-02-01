@@ -1,5 +1,4 @@
 // This code is the javascript for the udacity resume project 
-
 // below is the information that is in the header and footer of the page
 var bio = {
     "name": "Jessica Sole",
@@ -39,19 +38,22 @@ $("#topContacts, #footerContacts").append(formattedemail, formattedgithub, forma
 //This loop below puts the skills array onto the header portion of the project
 var array = bio.skills.length;
 
-for (skill = 0; skill < array; skill++) {
-    $("#header").append(HTMLskillsStart);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-    $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-    $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-    $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-    $("#skills").append(formattedSkill);
-    break;
-}
+bio.display = function() {
+    for (skill = 0; skill < array; skill++) {
+        $("#header").append(HTMLskillsStart);
+        var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+        $("#skills").append(formattedSkill);
+        var formattedSkill1 = HTMLskills.replace("%data%", bio.skills[1]);
+        $("#skills").append(formattedSkill1);
+        var formattedSkill2 = HTMLskills.replace("%data%", bio.skills[2]);
+        $("#skills").append(formattedSkill2);
+        var formattedSkill3 = HTMLskills.replace("%data%", bio.skills[3]);
+        $("#skills").append(formattedSkill3);
+        break;
+    }
+};
 
+bio.display();
 
 
 //// This is the work history section of the resume project
